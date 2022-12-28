@@ -46,7 +46,6 @@ function Exchange({ data }) {
       )
         .then((res) => res.json())
         .then((e) => {
-          console.log(e);
           let obj = {
             [rate.to]: (e.conversion_rates[rate.to] * input).toFixed(2),
           };
