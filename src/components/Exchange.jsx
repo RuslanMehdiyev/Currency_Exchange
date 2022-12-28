@@ -36,7 +36,7 @@ function Exchange({ data }) {
       )
         .then((res) => res.json())
         .then((e) => {
-            console.log(e);
+          console.log(e);
           let obj = {
             [rate.to]: (e.conversion_rates[rate.to] * input).toFixed(2),
           };
@@ -47,9 +47,6 @@ function Exchange({ data }) {
         });
     }
   };
-  //   const changePlace = () => {
-  //     // console.log("salm");
-  //   };
   return (
     <>
       <div className="main">
@@ -77,10 +74,7 @@ function Exchange({ data }) {
             ""
           )}
           <span>
-            <i
-              className="fa-solid fa-right-left"
-              //   onClick={() => changePlace()}
-            ></i>
+            <i className="fa-solid fa-right-left"></i>
           </span>
           <h5>To:</h5>
           <select
@@ -107,7 +101,6 @@ function Exchange({ data }) {
               type="number"
               onChange={(e) => {
                 setInput(e.target.value);
-                // exchangeRate();
               }}
             />
             <button className="changeBtn" onClick={() => exchangeRate()}>
