@@ -107,7 +107,7 @@ function Exchange({ data }) {
               type="number"
               onChange={(e) => {
                 setInput(e.target.value);
-                exchangeRate();
+                // exchangeRate();
               }}
             />
             <button className="changeBtn" onClick={() => exchangeRate()}>
