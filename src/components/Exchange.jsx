@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OtherCurrencies from "./OtherCurrencies";
 
 function Exchange({ data }) {
   const commons = ["USD", "AZN", "TRY", "EUR"];
   const [input, setInput] = useState("");
   const [result, setResult] = useState({});
+  const isInitialMount = useRef(true);
+
   if (input < 0) {
     setInput(input * -1);
   }
@@ -18,12 +20,21 @@ function Exchange({ data }) {
     from: "",
     to: "",
   });
-  
+
   const setValue = (e) => {
     const { name, value } = e.target;
     setRate({ ...rate, [name]: value });
     setError({ ...error, [name]: "" });
   };
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      exchangeRate();
+    }
+  }, [input]);
+
   const exchangeRate = () => {
     if (rate.from.length < 1) {
       setError({ ...error, from: "Choose Currency" });
